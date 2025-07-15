@@ -46,5 +46,3 @@ Whether you're a traveler looking for a place to stay or a host wanting to list 
 
 ---
 
-## 📁 Folder Structure
-
