@@ -10,53 +10,218 @@ body{
 }
 
 /*Navbar*/
-.navbar{
-    height: 5rem;
-    background-color: white;
+.navbar {
+  height: 5rem;
+  background-color: white;
 }
 
-.fa-compass{
-    color: #fe424d;
-    font-size: 2rem;
+.fa-compass {
+  color: #fe424d;
+  font-size: 2rem;
 }
 
-.nav-link{
-    color: #222222 !important;
+.nav-link {
+  color: #222222 !important;
 }
+
+.nav-link.home:hover {
+  color: #fe424d !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Nav buttons (login, signup, logout) */
+.nav-btn {
+  background-color: #fe424d;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 300;
+  text-decoration: none;
+  margin-left: 0.6rem;
+  display: inline-block;
+  border-radius: 10px;
+  transition: background 0.25s, color 0.25;
+  letter-spacing: 0.1px;
+}
+.nav-btn:hover, .nav-btn:focus {
+  background-color: #d5353d;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+/* Profile dropdown styles */
+.nav-profile-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Avatar button */
+.nav-profile-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.2rem 0.3rem;
+  border-radius: 40px;
+  transition: background 0.2s;
+  user-select: none;
+}
+.nav-profile-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  object-fit: cover;
+  background: #eee;
+}
+.nav-profile-arrow {
+  font-size: 1rem;
+  margin-left: 6px;
+  color: #888;
+}
+.nav-profile-btn:focus, .nav-profile-btn:hover {
+  background-color: #f4f4f4;
+}
+
+.navbar-brand {
+  margin-left: 20px;
+}
+
+
+/* Dropdown position and appearance */
+.nav-profile-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  position: absolute;
+  right: 0;
+  top: 120%;
+  min-width: 180px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+  border-radius: 8px;
+  padding: 1.1rem 1rem;
+  z-index: 1000;
+}
+
+.nav-profile-wrapper.active .nav-profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-profile-username {
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.nav-profile-dropdown .nav-btn {
+  display: block;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  padding: 0.52rem 0.7rem;
+}
+
 
 /*Footer*/
-.f-info-links a{
-    text-decoration: none;
-    color: #222222 ;
+.nm-footer {
+  background: #efefef;
+  width: 100%;             
+  border-radius: 0;        
+  margin: 0;
+  padding: 0;
+}
+.nm-footer-title {
+  font-size: 1.5rem;
+  color: #fe424d;
+  font-weight: 700;
+  letter-spacing: 0.8px;
 }
 
-.f-info-links a:hover{
-    text-decoration: underline;
+.nm-footer-desc {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
-.f-info-links, .f-info-socials, .f-info-brand{
-    color: #222222;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nm-footer-head {
+  color: #fe424d;
+  font-size: 1.08rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
 }
 
-.f-info-socials i{
-    font-size: 1.3rem;
-    padding: 0.5rem 0 0.5rem 0;
-    margin-right: 1rem;
+.nm-footer-list {
+  padding-left: 0;
 }
 
-.f-info{
-    text-align: center;
-    height: 6rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
+.nm-footer-list li {
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
 }
+
+.nm-footer-list li a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nm-footer-list li a:hover {
+  color: #fe424d;
+  text-decoration: underline;
+}
+
+.nm-footer-socials a {
+  display: inline-block;
+  margin-right: 1.2rem;
+  color: #222;
+  font-size: 1.27rem;
+  transition: color 0.2s, transform 0.2s;
+  opacity: 0.85;
+}
+
+.nm-footer-socials a:hover {
+  color: #fe424d;
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+.nm-footer .text-center {
+  color: #666;
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+  letter-spacing: 0.1px;
+}
+
+.nm-footer .text-center a {
+  color: #fe424d;
+  margin: 0 8px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nm-footer .text-center a:hover {
+  text-decoration: underline;
+  color: #d5353d;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nm-footer .row {
+    flex-direction: column;
+  }
+  .nm-footer .col-md-3 {
+    min-width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
 
 /*Cards*/
 .listing-card{
