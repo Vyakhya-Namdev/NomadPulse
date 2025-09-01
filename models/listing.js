@@ -11,7 +11,7 @@ const listingSchema = new Schema({
     category: {
         type: String,
         enum: [
-            "trending", "rooms", "Iconic Cities", "mountains", "castles", "amazing-pools", "camping", "farms", "arctic", "domes", "creativity-art"
+            "trending", "rooms", "iconic-cities", "mountains", "castles", "amazing-pools", "camping", "farms", "arctic", "domes", "creativity-art"
         ]
     },
     image: {
