@@ -3,10 +3,42 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN;
 const baseClient = mbxGeocoding({ accessToken: mapToken });
 
-module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("./listings/index.ejs", { allListings })};
+// module.exports.index = async (req, res) => {
+//     const searchQuery = req.query.search;
+//     let allListings;
+//     if (searchQuery) {
+//         allListings = await Listing.find({
+//             title: { $regex: searchQuery, $options: "i" } // Case-insensitive search on title
+//         });
+//     } else {
+//         allListings = await Listing.find({});
+//     }
+//     res.render("./listings/index.ejs", { allListings });
+// };
 
+module.exports.index = async(req,res)=>{
+    const { category, search } = req.query;
+    let query = {};
+    
+    if (category) {
+        query.category = category;
+    }
+    
+    if (search) {
+        query.$or = [
+            { title: { $regex: search, $options: 'i' } },
+            { location: { $regex: search, $options: 'i' } },
+            { country: { $regex: search, $options: 'i' } }
+        ];
+    }
+    
+    const allListings = await Listing.find(query);
+    res.render("listings/index", { 
+  allListings,
+  currentCategory: req.query.category,
+  searchQuery: req.query.search 
+});
+};
 
 module.exports.renderNewForm = (req, res) => {
     res.render("./listings/new.ejs"); 

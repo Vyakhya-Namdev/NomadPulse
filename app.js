@@ -28,7 +28,7 @@ main()
     .then((res) => {
         console.log("Connected to database");
     }).catch(err => {
-        console.log(err);
+        console.log("Not connecting to database", err);
     })
 async function main() {
     await mongoose.connect(dbUrl);

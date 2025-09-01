@@ -7,7 +7,13 @@ const listingSchema = new Schema({
         type: String,
         required: true,
     },
-    description: String,
+    description: String,    
+    category: {
+        type: String,
+        enum: [
+            "trending", "rooms", "Iconic Cities", "mountains", "castles", "amazing-pools", "camping", "farms", "arctic", "domes", "creativity-art"
+        ]
+    },
     image: {
         url: String,
         filename: String,
@@ -36,7 +42,6 @@ const listingSchema = new Schema({
             required: true,
         }
     },
-    
 });
 
 listingSchema.post("findOneAndDelete", async(listing) => {
